@@ -33,12 +33,6 @@ public class ProductController {
         return syncService.scrapProductDetails(searchKey).buffer(2);
     }
 
-    @GetMapping(value = "/v1/search/products", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<List<Product>> searchProducts(@RequestParam(required = true) String searchKey) {
-        LOGGER.debug("EndPoint:- API for initiating and scraping products");
-        return syncService.queryProductDetails(searchKey).buffer(4);
-    }
-
     @GetMapping("/v1/recent")
     public List<AuditLog> fetchRecentProducts() {
         LOGGER.debug("EndPoint:- API for fetching the Recent Audits");
